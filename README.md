@@ -36,9 +36,16 @@ Outputs -
 * Recommend top 5 products based on interactions of similar users.
 
 Approach -
-* 
-* 
-* 
+* Here, user_id is of object, for our convenience we convert it to value of 0 to 1539(integer type).
+* We write a function to find similar users - 
+  1. Find the similarity score of the desired user with each user in the interaction matrix using cosine_similarity and append to an empty list and sort it.
+  2. extract the similar user and similarity scores from the sorted list 
+  3. remove original user and its similarity score and return the rest.
+* We write a function to recommend users - 
+  1. Call the previous similar users function to get the similar users for the desired user_id.
+  2. Find prod_ids with which the original user has interacted -> observed_interactions
+  3. For each similar user Find 'n' products with which the similar user has interacted with but not the actual user.
+  4. return the specified number of products. 
 
 ### **3) Model based Collaborative filtering**
 Objective -
