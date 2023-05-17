@@ -59,4 +59,19 @@ Approach -
 * It is performing singular value decomposition (SVD) on the sparse or csr matrix. SVD is a matrix decomposition technique that can be used to reduce the dimensionality of a matrix. In this case, the SVD is used to reduce the dimensionality of the matrix of product ratings to 50 latent features.
 * It is calculating the predicted ratings for all users using SVD. The predicted ratings are calculated by multiplying the U matrix, the sigma matrix, and the Vt matrix.
 * It is storing the predicted ratings in a DataFrame. The DataFrame has the same columns as the original matrix of product ratings. The rows of the DataFrame correspond to the users. The values in the DataFrame are the predicted ratings for each user.
+* A funtion is written to recommend products based on the rating predictions made : 
+  1. It gets the user's ratings from the interactions_matrix.
+  2. It gets the user's predicted ratings from the preds_matrix.
+  3. It creates a DataFrame with the user's actual and predicted ratings.
+  4. It adds a column to the DataFrame with the product names.
+  5. It filters the DataFrame to only include products that the user has not rated.
+  6. It sorts the DataFrame by the predicted ratings in descending order.
+  7. It prints the top num_recommendations products.
+* Evaluating the model :
+  1. Calculate the average rating for all the movies by dividing the sum of all the ratings by the number of ratings.
+  2, Calculate the average rating for all the predicted ratings by dividing the sum of all the predicted ratings by the number of ratings.
+  3. Create a DataFrame called rmse_df that contains the average actual ratings and the average predicted ratings.
+  4. Calculate the RMSE of the SVD model by taking the square root of the mean of the squared errors between the average actual ratings and the average predicted ratings.
 
+> The squared parameter in the mean_squared_error function determines whether to return the mean squared error (MSE) or the root mean squared error (RMSE). When squared is set to False, the function returns the RMSE, which is the square root of the MSE. In this case, you are calculating the RMSE, so you have set squared to False. This means that the errors are first squared, then averaged, and finally square-rooted to obtain the RMSE.
+     
